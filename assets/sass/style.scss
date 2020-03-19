@@ -11,6 +11,15 @@ Text Domain: webpack-wordpress
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 */
 
-html {
+@import "~foundation-sites/scss/foundation";
+@import "settings";
+@import 'base/base';
+@import 'components/components';
+@import 'pages/pages';
+@import 'sections/sections';
+@import 'templates/templates';
+@import 'vendors/vendors';
+
+.cell {
   background: red;
 }

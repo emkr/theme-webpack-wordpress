@@ -1,18 +1,23 @@
-<!DOCTYPE html>
-<html <?php language_attributes(); ?>>
-    <head>
-        <title></title>
-        <?php wp_head(); ?>
-    </head>
-    <body <?php body_class(); ?>>
-    <div id="primary" class="content-area">
-		<main id="main" class="site-main">
-            Mario
-        <?php echo get_template_directory(); ?>
-        <?php wp_nav_menu(); ?>
+<?php
+/**
+ * The main template file
+ * This is the most generic template file in a WordPress theme
+ * and one of the two required files for a theme (the other being style.css).
+ * It is used to display a page when nothing more specific matches a query.
+ * E.g., it puts together the home page when no home.php file exists
+ *
+ * Methods for TimberHelper can be found in the /lib sub-directory
+ *
+ * @package  WordPress
+ * @subpackage  Timber
+ * @since   Timber 0.1
+ */
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
-    </body>
-    <?php wp_footer(); ?>
-</html>
+$context          = Timber::context();
+$context['posts'] = new Timber\PostQuery();
+$context['foo']   = 'bar';
+$templates        = array( 'index.twig' );
+if ( is_home() ) {
+	array_unshift( $templates, 'front-page.twig', 'home.twig' );
+}
+Timber::render( $templates, $context );

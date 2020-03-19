@@ -10,7 +10,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const mode = ( process.env.NODE_ENV === 'production' ) ? 'production' : 'development'
-const PROXY = 'http://webpack-wordpress.test/'
+const PROXY = 'http://theinfiniteagency.test/'
 
 const config = {
     entry: {
@@ -105,6 +105,7 @@ const config = {
             open: false,
             proxy: PROXY,
             files: [
+                '**/*.twig',
                 '**/*.php'
             ]
         }, {
